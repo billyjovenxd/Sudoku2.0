@@ -10,7 +10,8 @@ Elija su nivel de dificultad:
 Marque 2 para jugar 2x2
 Marque 3 para jugar 3x3
 -->3
-Luego de elegir el nivel de dificultad el juego empezará, ya sea un sudoku 2x2 o 3x3.	 
+
+* Luego de elegir el nivel de dificultad el juego empezará, ya sea un sudoku 2x2 o 3x3.	 
 
                                                   --- --- --- ---                   
                                                  |   :   |   :   |                           
@@ -106,10 +107,10 @@ Cuando tus valores no son aceptados pueden aparecer 3 alertas:
 
 Si usted logra completar el sudoku exitosamente se mostrará en pantalla un:
 
-GANASTE!
+# GANASTE!
 
 
 
 Si  fallas 4 veces seguidas saldrá el anuncio 
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
- YA PERDISTE
+ #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ #YA PERDISTE
