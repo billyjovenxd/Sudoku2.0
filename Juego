@@ -1,0 +1,400 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int menu(){
+    int niveldif;
+    cout << "BIENVENIDO A SUDOKU!" << endl;
+    cout<<'\n'<<"Elija su nivel de dificultad:" <<'\n'<<
+        "Marque 2 para jugar 2x2"<<'\n'<<"Marque 3 para jugar 3x3"<<'\n'<<"->";
+    cin>> niveldif;cout<<'\n';
+
+    while (true) {
+        if (niveldif == 2) {
+            break;
+
+        } else if (niveldif == 3) {
+            break;
+
+        } else {
+            cout << '\n' << "Por favor ingrese un numero valido (2 o 3)" << '\n' << "->";
+            cin >> niveldif;
+            cout << '\n';
+        }
+    }
+    return niveldif;
+}
+
+class Sudoku {
+private:
+    int tamano;
+public:
+    Sudoku();
+    explicit Sudoku (int tamano);
+    int get_tamano();
+};
+
+Sudoku:: Sudoku(){
+    tamano={};
+}
+
+
+Sudoku::Sudoku(int tamano) {
+    this->tamano = tamano;
+}
+
+
+int Sudoku::get_tamano() {
+    return tamano;
+}
+
+
+bool verificar_sudoku3_columna(int x, int nuevo_num, int Matriz[9][9]){
+    for (int i=0; i<9; i++){
+        if(Matriz[x-1][i]==nuevo_num){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool verificar_sudoku3_fila(int y, int nuevo_num, int Matriz[9][9]){
+    for (int i=0; i<9; i++){
+        if(Matriz[i][y-1]==nuevo_num){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool verificar_sudoku3_casilla(int x, int y, int nuevo_num, int matriz[9][9]) {
+    if(x<=3 && y<=3){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=3 && y<=6 && x<=3){
+        for (int i = 3; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=6 && y<=9 && x<=3) {
+        for (int i = 6; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y<=3 && x>=3 && x<=6) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=3 && y<=6 && x>=3 && x<=6) {
+        for (int i = 3; i < 6; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=6 && y<=9 && x>=3 && x<=6) {
+        for (int i = 6; i < 9; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y<=3 && x>=6 && x<=9) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=3 && y<=6 && x>=6 && x<=9) {
+        for (int i = 3; i < 6; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=6 && y<=9 && x>=6 && x<=9) {
+        for (int i = 6; i < 9; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+
+bool verificar_sudoku2_columna(int x, int nuevo_num, int Matriz[4][4]){
+    for (int i=0; i<4; i++){
+        if(Matriz[x-1][i]==nuevo_num){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool verificar_sudoku2_fila(int y, int nuevo_num, int Matriz[4][4]){
+    for (int i=0; i<4; i++){
+        if(Matriz[i][y-1]==nuevo_num){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool verificar_sudoku2_casilla(int x, int y, int nuevo_num, int matriz[4][4]) {
+    if(x<=2 && y<=2){
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=2 && y<=4 && x<=2){
+        for (int i = 2; i < 4; i++) {
+            for (int j = 0; j < 2; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(x>=2 && x<=4 && y<=2){
+        for (int i = 0; i < 2; i++) {
+            for (int j = 2; j < 4; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y<=4 && y>=2 && x>=2 && x<=4) {
+        for (int i = 2; i < 4; i++) {
+            for (int j = 2; j < 4; j++) {
+                if (matriz[i][j] == nuevo_num) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+
+void sudoku3() {
+    int contador;
+    contador=0;
+
+    enum { _ = -1 };
+    int matriz[9][9] = {{_, 6, _, 1, _, 4, _, 5, _},
+                        {_, _, _, 3, _, 5, 6, _, _},
+                        {2, _, _, _, _, _, _, _, 1},
+                        {8, _, _, 4, _, 7, _, _, 6},
+                        {_, _, 6, _, _, _, 3, _, _},
+                        {7, _, _, 9, _, 1, _, _, 4},
+                        {5, _, _, _, _, _, _, _, 2},
+                        {_, _, 7, 2, _, 6, 9, _, _},
+                        {_, 4, _, 5, _, 8, _, 7, _}};
+
+    do{
+        for (int i = 0; i < 9; i++) {
+            if (i == 3 || i == 6 || i == 0) {
+                cout << " --- --- --- --- --- --- --- --- ---" << endl << "| ";
+            } else {
+                cout << "  -   -   -   -   -   -   -   -   - " << endl << "| ";
+            }
+            for (int j = 0; j < 9; j++) {
+                if (j == 2 || j == 5 || j == 8) {
+                    if (matriz[i][j] > 0) { cout << matriz[i][j] << " | "; }
+                    else {
+                        cout << " " << " | ";
+                    }
+                }
+                else { if (matriz[i][j] > 0) { cout << matriz[i][j] << " : "; } else { cout << " " << " : "; }}
+            }
+            cout << endl;
+        }
+        cout << " --- --- --- --- --- --- --- --- ---" << endl << endl;
+
+        int x;
+        int y;
+        int nuevo_num;
+        int contador2;
+        contador2=0;
+        while (true) {
+            cout << "Ingrese la coordenada x: " << '\n';
+            cin >> x;
+            cout << "Ingrese la coordenada y: " << '\n';
+            cin >> y;
+            cout << "Ingrese el numero que quiera agregar: " << '\n';
+            cin >> nuevo_num;
+
+            if (x >= 1 && x <= 9 && y >= 1 && y <= 9) {
+                if (nuevo_num >= 1 && nuevo_num <= 9) {
+                    if (verificar_sudoku3_fila(y, nuevo_num, matriz) == 0 &&
+                        verificar_sudoku3_columna(x, nuevo_num, matriz) == 0 &&
+                        verificar_sudoku3_casilla(x, y, nuevo_num, matriz) == 0) {
+
+                        if (matriz[y - 1][x - 1] <= 0) {
+
+                            matriz[y - 1][x - 1] = nuevo_num;
+
+                            break;
+                        } else {
+                            cout << "Posición ocupada" << '\n';
+                        }
+                    } else {
+                        cout << "Numero inválido" << '\n';
+                    }
+                }
+                else {
+                    cout << "Numero inválido" << '\n';
+                }
+            }
+            else {
+                cout << "Coordenadas inválidas" << '\n';
+            }
+            contador2++;
+            if (contador2==5){
+                cout<<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \n YA PERDISTE \n\n\n\n\n\n\n\n\n\n\n\n";
+                break;
+            }
+        }
+        contador++;
+    }while (contador<=52);
+    cout<<"GANASTE!"<<'\n';//cambiar mas tarde
+}
+
+
+void sudoku2() {
+    int contador;
+    contador=0;
+    enum {_ =-1};
+    int matriz[4][4]= {{ _, _, _, _},
+                       { _, _, 1, _},
+                       { 4, _, _, _},
+                       { _, 2, _, 3}};
+    do{
+        for (int i = 0; i < 4; i++){
+            if (i==2 || i==0){
+                cout<<" --- --- --- ---"<<endl<<"| ";
+            }
+            else{
+                cout<<"  -   -   -   -"<<endl<<"| ";
+            }
+            for (int j = 0; j < 4; j++) {
+                if (j==1 || j==3 ){  if (matriz[i][j]>0){cout<<matriz[i][j]<<" | ";} else{cout<<" "<<" | ";}}
+                else {if (matriz[i][j]>0){cout<<matriz[i][j]<<" : ";} else{cout<<" "<<" : ";}}
+            }cout<<endl;
+        }
+        cout<<" --- --- --- ---"<<endl<<endl;
+
+        int x;
+        int y;
+        int nuevo_num;
+        int contador2;
+        contador2=0;
+        while(true){
+            cout << "Ingrese la coordenada x: " << '\n';
+            cin >> x;
+            cout << "Ingrese la coordenada y: " << '\n';
+            cin >> y;
+            cout << "Ingrese el numero que quiera agregar: " << '\n';
+            cin >> nuevo_num;
+
+            if (x >= 1 && x <= 4 && y >= 1 && y <= 4) {
+                if (nuevo_num >= 1 && nuevo_num <= 4) {
+                    if (verificar_sudoku2_fila(y, nuevo_num, matriz) == 0 &&
+                        verificar_sudoku2_columna(x, nuevo_num, matriz) == 0 &&
+                        verificar_sudoku2_casilla(x, y, nuevo_num, matriz) == 0) {
+
+                        if (matriz[y - 1][x - 1] <= 0) {
+
+                            for (int i = 0; i < 4; i++) {
+                                for (int j = 0; j < 4; j++) {
+                                    matriz[y - 1][x - 1] = nuevo_num;
+                                }
+                            }
+                            break;
+                        }
+
+                        else{
+                            cout<< "Posición ocupada" <<"\n\n";
+                        }
+                    }
+                    else {
+                        cout << "Numero inválido " << "\n\n";
+                    }
+                } else {
+                    cout << "Numero fuera de rango" << "\n\n";
+                }
+            }
+            else {
+                cout << "Coordenadas inválidas" << "\n\n";
+            }
+            contador2++;
+            if (contador2==4){
+                cout<<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA \n YA PERDISTE \n\n\n\n\n\n\n\n\n\n\n\n";
+                break;
+            }
+
+        }
+        contador++;
+    }while (contador<=12);
+    cout<<"GANASTE!"<< '\n';
+}
+
+
+void juego_sudoku(Sudoku s){
+    if (s.get_tamano()==2){
+        sudoku2();
+    }
+    else if(s.get_tamano()==3){
+        sudoku3();
+    }
+}
+
+
+int main() {
+    int l;
+    l = menu();
+    auto s1 = Sudoku(l);
+    juego_sudoku(s1);
+    return 0;
+}
