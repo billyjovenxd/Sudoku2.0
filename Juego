@@ -217,19 +217,39 @@ bool verificar_sudoku2_casilla(int x, int y, int nuevo_num, int matriz[4][4]) {
 
 
 void sudoku3() {
+    int t;
     int contador;
     contador=0;
 
     enum { _ = -1 };
-    int matriz[9][9] = {{_, 6, _, 1, _, 4, _, 5, _},
-                        {_, _, _, 3, _, 5, 6, _, _},
-                        {2, _, _, _, _, _, _, _, 1},
-                        {8, _, _, 4, _, 7, _, _, 6},
-                        {_, _, 6, _, _, _, 3, _, _},
-                        {7, _, _, 9, _, 1, _, _, 4},
-                        {5, _, _, _, _, _, _, _, 2},
-                        {_, _, 7, 2, _, 6, 9, _, _},
-                        {_, 4, _, 5, _, 8, _, 7, _}};
+    int matriz[9][9] = {{_, 1, _, 1, _, 1, _, 1, _},
+                        {_, _, _, 1, _, 1, 1, _, _},
+                        {1, _, _, _, _, _, _, _, 1},
+                        {1, _, _, 1, _, 1, _, _, 1},
+                        {_, _, 1, _, _, _, 1, _, _},
+                        {1, _, _, 1, _, 1, _, _, 1},
+                        {1, _, _, _, _, _, _, _, 1},
+                        {_, _, 1, 1, _, 1, 1, _, _},
+                        {_, 1, _, 1, _, 1, _, 1, _}};
+
+    srand(time(NULL));
+    for(int i = 0; i < 9 ; i++){
+        for(int j = 0; j < 9; j++){
+            if (matriz[i][j]>0){
+                while(true) {
+                    t = (rand() % 9) + 1;
+                    if (verificar_sudoku3_fila(i+1, t, matriz) == 0 &&
+                        verificar_sudoku3_casilla(j+1, i+1, t, matriz)==0 &&
+                        verificar_sudoku3_columna(j+1, t, matriz)==0) {
+                        matriz[i][j] = t;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
 
     do{
         for (int i = 0; i < 9; i++) {
@@ -297,38 +317,56 @@ void sudoku3() {
         }
         contador++;
     }while (contador<52);
-    
+
     for (int i = 0; i < 9; i++) {
-            if (i == 3 || i == 6 || i == 0) {
-                cout << " --- --- --- --- --- --- --- --- ---" << endl << "| ";
-            } else {
-                cout << "  -   -   -   -   -   -   -   -   - " << endl << "| ";
-            }
-            for (int j = 0; j < 9; j++) {
-                if (j == 2 || j == 5 || j == 8) {
-                    if (matriz[i][j] > 0) { cout << matriz[i][j] << " | "; }
-                    else {
-                        cout << " " << " | ";
-                    }
-                }
-                else { if (matriz[i][j] > 0) { cout << matriz[i][j] << " : "; } else { cout << " " << " : "; }}
-            }
-            cout << endl;
+        if (i == 3 || i == 6 || i == 0) {
+            cout << " --- --- --- --- --- --- --- --- ---" << endl << "| ";
+        } else {
+            cout << "  -   -   -   -   -   -   -   -   - " << endl << "| ";
         }
-        cout << " --- --- --- --- --- --- --- --- ---" << endl << endl;
-    
+        for (int j = 0; j < 9; j++) {
+            if (j == 2 || j == 5 || j == 8) {
+                if (matriz[i][j] > 0) { cout << matriz[i][j] << " | "; }
+                else {
+                    cout << " " << " | ";
+                }
+            }
+            else { if (matriz[i][j] > 0) { cout << matriz[i][j] << " : "; } else { cout << " " << " : "; }}
+        }
+        cout << endl;
+    }
+    cout << " --- --- --- --- --- --- --- --- ---" << endl << endl;
+
     cout<<"GANASTE!"<<'\n';//cambiar mas tarde
 }
 
 
 void sudoku2() {
+    int t;
     int contador;
     contador=0;
     enum {_ =-1};
     int matriz[4][4]= {{ _, _, _, _},
                        { _, _, 1, _},
-                       { 4, _, _, _},
-                       { _, 2, _, 3}};
+                       { 1, _, _, _},
+                       { _, 1, _, 1}};
+    srand(time(NULL));
+    for(int i = 0; i < 4 ; i++){
+        for(int j = 0; j < 4; j++){
+            if (matriz[i][j]>0){
+                while(true) {
+                    t = (rand() % 4) + 1;
+                    if (verificar_sudoku2_fila(i+1, t, matriz) == 0 &&
+                        verificar_sudoku2_casilla(j+1, i+1, t, matriz)==0 &&
+                        verificar_sudoku2_columna(j+1, t, matriz)==0) {
+                        matriz[i][j] = t;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     do{
         for (int i = 0; i < 4; i++){
             if (i==2 || i==0){
@@ -396,21 +434,21 @@ void sudoku2() {
         }
         contador++;
     }while (contador<12);
-    
+
     for (int i = 0; i < 4; i++){
-            if (i==2 || i==0){
-                cout<<" --- --- --- ---"<<endl<<"| ";
-            }
-            else{
-                cout<<"  -   -   -   -"<<endl<<"| ";
-            }
-            for (int j = 0; j < 4; j++) {
-                if (j==1 || j==3 ){  if (matriz[i][j]>0){cout<<matriz[i][j]<<" | ";} else{cout<<" "<<" | ";}}
-                else {if (matriz[i][j]>0){cout<<matriz[i][j]<<" : ";} else{cout<<" "<<" : ";}}
-            }cout<<endl;
+        if (i==2 || i==0){
+            cout<<" --- --- --- ---"<<endl<<"| ";
         }
-        cout<<" --- --- --- ---"<<endl<<endl;
-        
+        else{
+            cout<<"  -   -   -   -"<<endl<<"| ";
+        }
+        for (int j = 0; j < 4; j++) {
+            if (j==1 || j==3 ){  if (matriz[i][j]>0){cout<<matriz[i][j]<<" | ";} else{cout<<" "<<" | ";}}
+            else {if (matriz[i][j]>0){cout<<matriz[i][j]<<" : ";} else{cout<<" "<<" : ";}}
+        }cout<<endl;
+    }
+    cout<<" --- --- --- ---"<<endl<<endl;
+
     cout<<"GANASTE!"<< '\n';
 }
 
