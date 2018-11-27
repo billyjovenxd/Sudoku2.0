@@ -50,7 +50,8 @@ Marque 3 para jugar 3x3
 El juego te pedirá tres datos, los cuales servirán para completar el sudoku.
 Te pedirá una coordenada “x”, y una “y”. También un número a agregar.
 
-x->    1    2    3    4	
+  x->    1    2    3    4	
+     
       --- --- --- ---
      | 1 :   :   :   |   1                   
        -   -   -   -   
@@ -96,7 +97,7 @@ Ingrese el número que quiera agregar:
 Cuando tus valores no son aceptados pueden aparecer 3 alertas:
 
 * Posición ocupada.       -Aparece cuando la posición seleccionada ya tenia un número.
-
+ 
 * Número inválido         -Aparece cuando tu numero no está entre los rangos del sudoku o no cumple con los requisitos del sudoku.
 
 * Coordenadas inválidas   -Aparece cuando tus coordenadas están fuera de los rangos del sudoku.
@@ -112,5 +113,4 @@ Si usted logra completar el sudoku exitosamente se mostrará en pantalla un:
 
 
 Si  fallas 4 veces seguidas saldrá el anuncio 
- #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
- #YA PERDISTE
+# AAAAAAAAAAAAAAA YA PERDISTE
