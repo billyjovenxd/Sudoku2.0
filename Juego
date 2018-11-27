@@ -25,6 +25,7 @@ int menu(){
     return niveldif;
 }
 
+
 class Sudoku {
 private:
     int tamano;
@@ -49,115 +50,47 @@ int Sudoku::get_tamano() {
 }
 
 
-bool verificar_sudoku3_columna(int x, int nuevo_num, int Matriz[9][9]){
-    for (int i=0; i<9; i++){
-        if(Matriz[i][x-1]==nuevo_num){
-            return true;
+class Verificar2{
+private:
+    int x;
+    int y;
+    int num;
+    int matriz[4][4];
+public:
+    Verificar2();
+    Verificar2(int x, int y, int num, int matriz[4][4]);
+    int get_num();
+    bool verificar_sudoku2_columna();
+    bool verificar_sudoku2_fila();
+    bool verificar_sudoku2_casilla();
+
+};
+
+
+Verificar2::Verificar2() {
+    x={};
+    y={};
+    num={};
+    int i,j;
+    for(i=0;i<4;i++){
+        for(j=0;j<4;j++){
+            matriz[i][j]=0;
         }
     }
-    return false;
 }
 
 
-bool verificar_sudoku3_fila(int y, int nuevo_num, int Matriz[9][9]){
-    for (int i=0; i<9; i++){
-        if(Matriz[y-1][i]==nuevo_num){
-            return true;
-        }
-    }
-    return false;
+Verificar2::Verificar2(int x, int y, int num, int matriz[4][4]) {
+    this->x=x;
+    this->y=y;
+    this->num=num;
+    this->matriz[4][4]=matriz[4][4];
 }
 
 
-bool verificar_sudoku3_casilla(int x, int y, int nuevo_num, int matriz[9][9]) {
-    if(x<=3 && y<=3){
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y>=3 && y<=6 && x<=3){
-        for (int i = 3; i < 6; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y>=6 && y<=9 && x<=3) {
-        for (int i = 6; i < 9; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y<=3 && x>=3 && x<=6) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 3; j < 6; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y>=3 && y<=6 && x>=3 && x<=6) {
-        for (int i = 3; i < 6; i++) {
-            for (int j = 3; j < 6; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y>=6 && y<=9 && x>=3 && x<=6) {
-        for (int i = 6; i < 9; i++) {
-            for (int j = 3; j < 6; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y<=3 && x>=6 && x<=9) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 6; j < 9; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y>=3 && y<=6 && x>=6 && x<=9) {
-        for (int i = 3; i < 6; i++) {
-            for (int j = 6; j < 9; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    else if(y>=6 && y<=9 && x>=6 && x<=9) {
-        for (int i = 6; i < 9; i++) {
-            for (int j = 6; j < 9; j++) {
-                if (matriz[i][j] == nuevo_num) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
-
-
-bool verificar_sudoku2_columna(int x, int nuevo_num, int Matriz[4][4]){
+bool Verificar2:: verificar_sudoku2_columna(){
     for (int i=0; i<4; i++){
-        if(Matriz[i][x-1]==nuevo_num){
+        if(matriz[i][x-1]== num){
             return true;
         }
     }
@@ -165,9 +98,9 @@ bool verificar_sudoku2_columna(int x, int nuevo_num, int Matriz[4][4]){
 }
 
 
-bool verificar_sudoku2_fila(int y, int nuevo_num, int Matriz[4][4]){
+bool Verificar2:: verificar_sudoku2_fila(){
     for (int i=0; i<4; i++){
-        if(Matriz[y-1][i]==nuevo_num){
+        if(matriz[y-1][i]== num){
             return true;
         }
     }
@@ -175,11 +108,11 @@ bool verificar_sudoku2_fila(int y, int nuevo_num, int Matriz[4][4]){
 }
 
 
-bool verificar_sudoku2_casilla(int x, int y, int nuevo_num, int matriz[4][4]) {
+bool Verificar2:: verificar_sudoku2_casilla() {
     if(x<=2 && y<=2){
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                if (matriz[i][j] == nuevo_num) {
+                if (matriz[i][j] == num) {
                     return true;
                 }
             }
@@ -188,7 +121,7 @@ bool verificar_sudoku2_casilla(int x, int y, int nuevo_num, int matriz[4][4]) {
     else if(y>=2 && y<=4 && x<=2){
         for (int i = 2; i < 4; i++) {
             for (int j = 0; j < 2; j++) {
-                if (matriz[i][j] == nuevo_num) {
+                if (matriz[i][j] == num) {
                     return true;
                 }
             }
@@ -197,7 +130,7 @@ bool verificar_sudoku2_casilla(int x, int y, int nuevo_num, int matriz[4][4]) {
     else if(x>=2 && x<=4 && y<=2){
         for (int i = 0; i < 2; i++) {
             for (int j = 2; j < 4; j++) {
-                if (matriz[i][j] == nuevo_num) {
+                if (matriz[i][j] == num) {
                     return true;
                 }
             }
@@ -206,7 +139,7 @@ bool verificar_sudoku2_casilla(int x, int y, int nuevo_num, int matriz[4][4]) {
     else if(y<=4 && y>=2 && x>=2 && x<=4) {
         for (int i = 2; i < 4; i++) {
             for (int j = 2; j < 4; j++) {
-                if (matriz[i][j] == nuevo_num) {
+                if (matriz[i][j] == num) {
                     return true;
                 }
             }
@@ -216,8 +149,161 @@ bool verificar_sudoku2_casilla(int x, int y, int nuevo_num, int matriz[4][4]) {
 }
 
 
+int Verificar2::get_num() {
+    return num;
+}
+
+
+class Verificar3{
+private:
+    int x;
+    int y;
+    int num;
+    int matriz[9][9];
+public:
+    Verificar3();
+    Verificar3(int x, int y, int num, int matriz[9][9]);
+    int get_num();
+    bool verificar_sudoku3_columna();
+    bool verificar_sudoku3_fila();
+    bool verificar_sudoku3_casilla();
+
+};
+
+
+Verificar3::Verificar3() {
+    x={};
+    y={};
+    num={};
+    int i, j;
+    for(i = 0; i < 9; i++){
+        for(j = 0; j < 9; j++){
+            matriz[i][j] = 0;
+        }
+    }
+}
+
+
+Verificar3::Verificar3(int x, int y, int num, int matriz[9][9]) {
+    this->x=x;
+    this->y=y;
+    this->num=num;
+    this->matriz[9][9]=matriz[9][9];
+}
+
+
+bool Verificar3:: verificar_sudoku3_columna(){
+    for (int i=0; i<9; i++){
+        if(matriz[i][x-1]==num){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool Verificar3:: verificar_sudoku3_fila(){
+    for (int i=0; i<9; i++){
+        if(matriz[y-1][i]==num){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool Verificar3:: verificar_sudoku3_casilla() {
+    if(x<=3 && y<=3){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=3 && y<=6 && x<=3){
+        for (int i = 3; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=6 && y<=9 && x<=3) {
+        for (int i = 6; i < 9; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y<=3 && x>=3 && x<=6) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=3 && y<=6 && x>=3 && x<=6) {
+        for (int i = 3; i < 6; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=6 && y<=9 && x>=3 && x<=6) {
+        for (int i = 6; i < 9; i++) {
+            for (int j = 3; j < 6; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y<=3 && x>=6 && x<=9) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=3 && y<=6 && x>=6 && x<=9) {
+        for (int i = 3; i < 6; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    else if(y>=6 && y<=9 && x>=6 && x<=9) {
+        for (int i = 6; i < 9; i++) {
+            for (int j = 6; j < 9; j++) {
+                if (matriz[i][j] == num) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+
+int Verificar3::get_num() {
+    return num;
+}
+
+
 void sudoku3() {
-    int t;
     int contador;
     contador=0;
 
@@ -237,11 +323,11 @@ void sudoku3() {
         for(int j = 0; j < 9; j++){
             if (matriz[i][j]>0){
                 while(true) {
-                    t = (rand() % 9) + 1;
-                    if (verificar_sudoku3_fila(i+1, t, matriz) == 0 &&
-                        verificar_sudoku3_casilla(j+1, i+1, t, matriz)==0 &&
-                        verificar_sudoku3_columna(j+1, t, matriz)==0) {
-                        matriz[i][j] = t;
+                    Verificar3 t =Verificar3(j, i, (rand() % 9) + 1, matriz);
+                    if (t.verificar_sudoku3_casilla()== 0 &&
+                        t.verificar_sudoku3_columna()==0 &&
+                        t.verificar_sudoku3_fila()==0) {
+                        matriz[i][j] = t.get_num();
                         break;
                     }
                 }
@@ -284,17 +370,19 @@ void sudoku3() {
             cout << "Ingrese el numero que quiera agregar: " << '\n';
             cin >> nuevo_num;
 
+            Verificar3 num = Verificar3(x, y, nuevo_num, matriz);
+
             if (x >= 1 && x <= 9 && y >= 1 && y <= 9) {
                 if (nuevo_num >= 1 && nuevo_num <= 9) {
-                    if (verificar_sudoku3_fila(y, nuevo_num, matriz) == 0 &&
-                        verificar_sudoku3_columna(x, nuevo_num, matriz) == 0 &&
-                        verificar_sudoku3_casilla(x, y, nuevo_num, matriz) == 0) {
+                    if (num.verificar_sudoku3_fila() == 0 &&
+                        num.verificar_sudoku3_columna() == 0 &&
+                        num.verificar_sudoku3_casilla() == 0) {
 
                         if (matriz[y - 1][x - 1] <= 0) {
 
-                            matriz[y - 1][x - 1] = nuevo_num;
-
+                            matriz[y - 1][x - 1] = num.get_num();
                             break;
+
                         } else {
                             cout << "Posición ocupada" << '\n';
                         }
@@ -342,7 +430,6 @@ void sudoku3() {
 
 
 void sudoku2() {
-    int t;
     int contador;
     contador=0;
     enum {_ =-1};
@@ -355,11 +442,10 @@ void sudoku2() {
         for(int j = 0; j < 4; j++){
             if (matriz[i][j]>0){
                 while(true) {
-                    t = (rand() % 4) + 1;
-                    if (verificar_sudoku2_fila(i+1, t, matriz) == 0 &&
-                        verificar_sudoku2_casilla(j+1, i+1, t, matriz)==0 &&
-                        verificar_sudoku2_columna(j+1, t, matriz)==0) {
-                        matriz[i][j] = t;
+                    Verificar2 t = Verificar2(j,i,(rand() % 4) + 1,matriz);
+                    if (t.verificar_sudoku2_columna() == 0 && t.verificar_sudoku2_casilla()==0
+                        && t.verificar_sudoku2_fila()==0){
+                        matriz[i][j] = t.get_num();
                         break;
                     }
                 }
@@ -384,7 +470,7 @@ void sudoku2() {
 
         int x;
         int y;
-        int nuevo_num;
+        int num;
         int contador2;
         contador2=0;
         while(true){
@@ -393,19 +479,21 @@ void sudoku2() {
             cout << "Ingrese la coordenada y: " << '\n';
             cin >> y;
             cout << "Ingrese el numero que quiera agregar: " << '\n';
-            cin >> nuevo_num;
+            cin >> num;
+
+            Verificar2 nuevo_num= Verificar2(x, y, num, matriz);
 
             if (x >= 1 && x <= 4 && y >= 1 && y <= 4) {
-                if (nuevo_num >= 1 && nuevo_num <= 4) {
-                    if (verificar_sudoku2_fila(y, nuevo_num, matriz) == 0 &&
-                        verificar_sudoku2_columna(x, nuevo_num, matriz) == 0 &&
-                        verificar_sudoku2_casilla(x, y, nuevo_num, matriz) == 0) {
+                if (num >= 1 && num <= 4) {
+                    if (nuevo_num.verificar_sudoku2_fila()==0 &&
+                        nuevo_num.verificar_sudoku2_casilla()==0 &&
+                        nuevo_num.verificar_sudoku2_columna() == 0) {
 
                         if (matriz[y - 1][x - 1] <= 0) {
 
                             for (int i = 0; i < 4; i++) {
                                 for (int j = 0; j < 4; j++) {
-                                    matriz[y - 1][x - 1] = nuevo_num;
+                                    matriz[y - 1][x - 1] = num;
                                 }
                             }
                             break;
