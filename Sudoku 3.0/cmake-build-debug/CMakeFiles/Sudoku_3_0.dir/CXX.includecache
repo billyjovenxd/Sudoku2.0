@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/m.noel/Desktop/Sudoku 3.0/Verificar2.cpp
+Verificar2.h
+/Users/m.noel/Desktop/Sudoku 3.0/Verificar2.h
+
+/Users/m.noel/Desktop/Sudoku 3.0/Verificar2.h
+
+/Users/m.noel/Desktop/Sudoku 3.0/Verificar3.cpp
+Verificar3.h
+/Users/m.noel/Desktop/Sudoku 3.0/Verificar3.h
+
+/Users/m.noel/Desktop/Sudoku 3.0/Verificar3.h
+
