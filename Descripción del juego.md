@@ -1,7 +1,7 @@
 # Sudoku2.0
 Es el avance final del juego.
 
-¿Cómo jugar este programa de sudoku?
+* ¿Cómo jugar este programa de sudoku? *
  
 
 El juego comenzará realizando una orden: 
@@ -10,20 +10,29 @@ Elija su nivel de dificultad:
 Marque 2 para jugar 2x2
 Marque 3 para jugar 3x3
 -->3
-
-
-
 Luego de elegir el nivel de dificultad el juego empezará, ya sea un sudoku 2x2 o 3x3.	 
 
-   --- --- --- ---                  --- --- --- --- --- --- --- --- ---  
-  |   :   |   :   |                |   : 6 :   | 1 :   : 4 |   : 5 :   |            
-    -   -   -   -                    -   -   -   -   -   -   -   -   -
-  |   :   | 1 :   |                |   :   :   | 3 :   : 5 | 6 :   :   | 
-   --- --- --- ---                    -   -   -   -   -   -   -   -   - 
-  | 4 :   |   :   |                | 2 :   :   |   :   :   |   :   : 1 |
-   --- --- --- ---                  --- --- --- --- --- --- --- --- ---
-  |   : 2 |   : 3 |                | 8 :   :   | 4 :   : 7 |   :   : 6 |
-   --- --- --- ---                   -   -   -   -   -   -   -   -   -
+                                                  --- --- --- ---                   
+                                                 |   :   |   :   |                           
+                                                   -   -   -   -                    
+                                                 |   :   | 1 :   |                
+                                                  --- --- --- ---                     
+                                                 | 4 :   |   :   |               
+                                                  --- --- --- ---                 
+                                                 |   : 2 |   : 3 |               
+                                                  --- --- --- ---  
+   
+		
+		
+		                        --- --- --- --- --- --- --- --- ---
+                                   |   : 6 :   | 1 :   : 4 |   : 5 :   |
+                                     -   -   -   -   -   -   -   -   -
+                                   |   :   :   | 3 :   : 5 | 6 :   :   |
+                                     -   -   -   -   -   -   -   -   -
+                                   | 2 :   :   |   :   :   |   :   : 1 |
+	                                --- --- --- --- --- --- --- --- ---
+                                   | 8 :   :   | 4 :   : 7 |   :   : 6 |
+		                         -   -   -   -   -   -   -   -   -
                                    |   :   : 6 |   :   :   | 3 :   :   |
                                      -   -   -   -   -   -   -   -   -
                                    | 7 :   :   |9  :   : 1 |   :   : 4 |
@@ -70,7 +79,8 @@ Ingrese la coordenada x:
 Ingrese la coordenada y:
 2
 Ingrese el número que quiera agregar:
-3
+3:
+
       --- --- --- ---
      | 1 :   :   :   |                      
        -   -   -   -   
