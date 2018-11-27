@@ -33,7 +33,7 @@ Marque 3 para jugar 3x3
                                    | 2 :   :   |   :   :   |   :   : 1 |
 	                                --- --- --- --- --- --- --- --- ---
                                    | 8 :   :   | 4 :   : 7 |   :   : 6 |
-		                           -   -   -   -   -   -   -   -   -
+		                            -   -   -   -   -   -   -   -   -
                                    |   :   : 6 |   :   :   | 3 :   :   |
                                      -   -   -   -   -   -   -   -   -
                                    | 7 :   :   |9  :   : 1 |   :   : 4 |
@@ -51,7 +51,7 @@ El juego te pedirá tres datos, los cuales servirán para completar el sudoku.
 Te pedirá una coordenada “x”, y una “y”. También un número a agregar.
 
   x->    1      2      3      4	
-  
+     
       --- --- --- ---
      | 1 :   :   :   |   1                   
        -   -   -   -   
