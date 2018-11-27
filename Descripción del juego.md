@@ -50,7 +50,7 @@ Marque 3 para jugar 3x3
 El juego te pedirá tres datos, los cuales servirán para completar el sudoku.
 Te pedirá una coordenada “x”, y una “y”. También un número a agregar.
 
-  x->    1    2    3    4	
+  x->    1     2     3     4	
      
       --- --- --- ---
      | 1 :   :   :   |   1                   
@@ -62,7 +62,7 @@ Te pedirá una coordenada “x”, y una “y”. También un número a agregar.
      |   : 2 :   :   |   4 
       --- --- --- ---
                          ^
-		        | |
+			 | 
                          y  
 
 Ejemplo:
@@ -81,7 +81,7 @@ Ingrese la coordenada x:
 Ingrese la coordenada y:
 2
 Ingrese el número que quiera agregar:
-3:
+3
 
       --- --- --- ---
      | 1 :   :   :   |                      
