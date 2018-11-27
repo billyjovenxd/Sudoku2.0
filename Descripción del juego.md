@@ -1,7 +1,7 @@
 # Sudoku2.0
 Es el avance final del juego.
 
-* ¿Cómo jugar este programa de sudoku? *
+* ¿Cómo jugar este programa de sudoku? 
  
 
 El juego comenzará realizando una orden: 
