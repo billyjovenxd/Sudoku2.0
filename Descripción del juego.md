@@ -62,7 +62,7 @@ Te pedirá una coordenada “x”, y una “y”. También un número a agregar.
      |   : 2 :   :   |   4 
       --- --- --- ---
                          ^
-			      | 
+			     | 
                          y  
 
 Ejemplo:
