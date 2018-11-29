@@ -1,4 +1,10 @@
 # Sudoku2.0
+Autores:
+-Monica Lopez
+
+-Billy Sulca
+
+-Mateo Noel
 Es el avance final del juego.
 
 * ¿Cómo jugar este programa de sudoku? 
@@ -115,7 +121,4 @@ Si usted logra completar el sudoku exitosamente se mostrará en pantalla un:
 Si  fallas 4 veces seguidas saldrá el anuncio 
 # AAAAAAAAAAAAAAA YA PERDISTE
 
-Autores:
--Monica Lopez
--Billy Sulca
--Mateo Noel
+
