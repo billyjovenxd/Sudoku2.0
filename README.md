@@ -114,3 +114,8 @@ Si usted logra completar el sudoku exitosamente se mostrará en pantalla un:
 
 Si  fallas 4 veces seguidas saldrá el anuncio 
 # AAAAAAAAAAAAAAA YA PERDISTE
+
+Autores:
+-Monica Lopez
+-Billy Sulca
+-Mateo Noel
