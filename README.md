@@ -1,10 +1,12 @@
 # Sudoku2.0
 Autores:
+
 -Monica Lopez
 
 -Billy Sulca
 
 -Mateo Noel
+
 Es el avance final del juego.
 
 * ¿Cómo jugar este programa de sudoku? 
